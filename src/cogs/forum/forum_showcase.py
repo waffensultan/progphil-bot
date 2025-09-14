@@ -149,7 +149,8 @@ class ForumShowcaseCog(GroupCog, name="forum-showcase"):
     def calculate_next_run(
         self, schedule: datetime, interval: str, day: str
     ) -> datetime:
-        now = datetime.now(timezone.utc)
+        # UTC+8
+        now = datetime.utcnow() + timedelta(hours=8)
         weekday_int = WEEKDAYS.index(day)
 
         next_run = schedule.replace(
